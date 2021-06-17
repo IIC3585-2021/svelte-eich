@@ -7,4 +7,4 @@ ALGOLIA_KEY=blablablabla
 
 ## Train the app
 
-For better results we could train the algorithm, for that we need a database with text as input and html as output
+For better results we could train the algorithm, for that we need a database with text as input and html as output.

@@ -2,6 +2,7 @@
   import Message from "./Message.svelte";
   import CreateMessage from "./CreateMessage.svelte";
   import Login from "./Login.svelte";
+  import Logout from "./Logout.svelte";
 
   import firebase from "firebase/app";
   import "firebase/auth";
@@ -19,9 +20,14 @@
   const googleProvider = new firebase.auth.GoogleAuthProvider();
 
   let user = authState(auth);
+  console.log(auth, '---------------------')
 
   const login = () => {
     auth.signInWithRedirect(googleProvider);
+	};
+
+  const logout = () => {
+    auth.signOut()
 	};
 
   const sendMessage = ev => {
@@ -78,6 +84,16 @@
   );
 </script>
 
+<style>
+  .section {
+    height: 100%;
+  }
+  .card {
+    height: 70%;
+    overflow-y: scroll;
+  }
+</style>
+
 <svelte:head>
   <link
     rel="stylesheet"
@@ -85,11 +101,18 @@
 </svelte:head>
 
 <div class="section">
-  {#each $messages as message}
-    <Message {...message} />
-  {/each}
+  <div class="card">
+    <div class="card-content">
+    {#each $messages as message}
+      <Message {...message} />
+    {/each}
+  </div>
+</div>
+
   {#if $user}
     <CreateMessage on:send={sendMessage} />
+    <Logout on:logout={logout} />
+
   {:else}
     <Login on:login={login} />
   {/if}
