@@ -59,7 +59,7 @@
 
   <div class="navbar">
     <div class="left">
-      <p class="logo">BravoNet</p>
+      <p class="logo">OpenIA HTML</p>
     </div>
     <div class="right">
       <div >
