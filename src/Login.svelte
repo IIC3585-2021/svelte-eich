@@ -12,4 +12,4 @@
   }
 </style>
 
-<button class="button is-primary" on:click={login}>Haga Login con Google😎</button>
+<button class="button is-primary" on:click={login}>Login with Google</button>

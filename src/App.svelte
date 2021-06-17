@@ -1,9 +1,9 @@
-<script>
+<script context="module">
   import Message from "./Message.svelte";
   import CreateMessage from "./CreateMessage.svelte";
   import Login from "./Login.svelte";
   import Logout from "./Logout.svelte";
-
+  import Navbar from "./Navbar.svelte";
   import firebase from "firebase/app";
   import "firebase/auth";
   import "firebase/firestore";
@@ -20,6 +20,7 @@
   const googleProvider = new firebase.auth.GoogleAuthProvider();
 
   let user = authState(auth);
+
   console.log(auth, '---------------------')
 
   const login = () => {
@@ -101,19 +102,17 @@
 </svelte:head>
 
 <div class="section">
+  <Navbar user={user} login={login} logout={logout}/>
   <div class="card">
     <div class="card-content">
     {#each $messages as message}
       <Message {...message} />
     {/each}
+    </div>
   </div>
-</div>
-
+  <div>
   {#if $user}
     <CreateMessage on:send={sendMessage} />
-    <Logout on:logout={logout} />
-
-  {:else}
-    <Login on:login={login} />
   {/if}
+  </div>
 </div>

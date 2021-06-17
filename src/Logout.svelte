@@ -12,4 +12,4 @@
   }
 </style>
 
-<button class="button is-primary" on:click={login}>Haga Logout😎</button>
+<button class="button is-primary" on:click={login}>Logout</button>
